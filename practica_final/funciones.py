@@ -1,33 +1,33 @@
 from servidores import SERVIDORES, LISTAUNO;
 
 # #apartado 1
-# def mostrar_inventario(lista):
-#     """Muestra la información básica de los servidores recibidos."""
-#     #print(servidores)
-#     print(f"{'ID':<5} {'NOMBRE':<13} {'ROL':<16} {'ESTADO':<10}{'CPU':<6}{'RAM':<6}" )
-#     print("---------------------------------------------------------")
-#     for x in lista:
-#         print(f"{x["id"]} {x["nombre"]} {x["rol"]} {x["estado"]} {x["cpu"]} {x["ram"]}" )
-#         print(f"{x["id"]:<5} {x["nombre"]:<13} {x["rol"]:<16} {x["estado"]:<10} {x["cpu"]:<6} {x["ram"]:<6}" );
+def mostrar_inventario(lista):
+    """Muestra la información básica de los servidores recibidos."""
+    #print(servidores)
+    print(f"{'ID':<5} {'NOMBRE':<13} {'ROL':<16} {'ESTADO':<10}{'CPU':<6}{'RAM':<6}" )
+    print("---------------------------------------------------------")
+    for x in lista:
+        print(f"{x["id"]} {x["nombre"]} {x["rol"]} {x["estado"]} {x["cpu"]} {x["ram"]}" )
+        print(f"{x["id"]:<5} {x["nombre"]:<13} {x["rol"]:<16} {x["estado"]:<10} {x["cpu"]:<6} {x["ram"]:<6}" );
 
 
-# #mostrar_inventario(SERVIDORES)
+mostrar_inventario(SERVIDORES)
 
 
 # #apartado 2
-# def buscar_por_id(servidores, identificador):
-#     for x in servidores:
-#         if identificador == x["id"]:
-#             return x
-#     return None
+def buscar_por_id(servidores, identificador):
+    for x in servidores:
+        if identificador == x["id"]:
+            return x
+    return None
 
-# id = int(input("identificador: "))
-# res = buscar_por_id(SERVIDORES, id)
+id = int(input("identificador: "))
+res = buscar_por_id(SERVIDORES, id)
 
-# if res == None:
-#     print("No encontrado")
-# else:
-#     print("Encontrado")
+if res == None:
+    print("No encontrado")
+else:
+    print("Encontrado")
 
 
 # #Apartado 3
@@ -94,7 +94,7 @@ def calcular_resumen(servidores):
     return resultado
 
 
-
+#Apartado 6
 def mostrar_servicios(servidor):
     """Muestra los servicios y su estado en un servidor."""
     servicios = servidor["servicios"]
@@ -110,7 +110,7 @@ def contar_servicios_inactivos(servidores):
     """Cuenta servicios inactivos en servidores encendidos.
        y lo devuelve comoo resultado"""
     contador = 0
-    le = f.filtrar_por_estado(servidores, "encendido")
+    le = filtrar_por_estado(servidores, "encendido")
     for servidor in le:
         for clave, valor in servidor["servicios"].items():
             if valor == "inactivo":
@@ -125,3 +125,37 @@ def mostrar_resumen(servidores):
     print("Apagados:" , res["apagados"])
     print("Disponibilidad:" , res["disponibilidad"])
     print("Porcentaje CPU:" , res["cpu"])
+
+
+
+#apartado 7
+
+
+
+#apartado 8
+def mostrar_menu():
+    print("=== CONSOLA DE INVENTARIO LINUX ===")
+    print("1. Ver inventario")
+    print("2. Buscar servidor por ID")
+    print("3. Filtrar por rol")
+    print("4. Resumen de la infraestructura")
+    print("5. Ver servicios de un servidor")
+    print("6. Cambiar estado de un servidor")
+    print("7. Cambiar estado de un servicio")
+    print("0. Salir")
+
+def menu(lservidores):
+    mostrar_menu()
+    opcion = input("Elige una opción: ")
+    while opcion != "0":
+        pass
+        if opcion == "1":
+            mostrar_inventario(lservidores)
+        elif opcion == "2":
+            id = int(input("identificador: "))
+            res = buscar_por_id(lservidores, id)
+            if res != None:
+                mostrar_inventario([res])
+                print("No encontrado")
+            else:
+                print("No encontrado")

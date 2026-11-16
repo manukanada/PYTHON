@@ -17,6 +17,9 @@ import funciones as f
 # f.mostrar_resumen(SERVIDORES)
 # f.mostrar_resumen(LISTAUNO)
 
-f.mostrar_servicios(SERVIDORES[0])
-res = f.contar_servicios_inactivos(SERVIDORES)
-print(res)
+# f.mostrar_servicios(SERVIDORES[0])
+# res = f.contar_servicios_inactivos(SERVIDORES)
+# print(res)
+
+f.menu(LISTAUNO)
+f.menu(SERVIDORES)
